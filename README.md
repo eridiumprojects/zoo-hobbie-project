@@ -1,6 +1,6 @@
 # Interview REST API Service
 
-A spring boot REST web service that allows the basic CRUD operations as well as searching by title or category.
+A spring boot REST web service that allows the basic CRUD operations and update entities relations.
 Added Authentication and Authorization via the Spring Security module.
 
 ## User
@@ -75,4 +75,8 @@ __Request body__:
    "host": "<string>" //INPUT-FORMAT: NEW NAME OF USER
 }
 ```
+
+## Warmup task
+
+`Check src/main/java/com.example.interviewproject/practisetask`
 
