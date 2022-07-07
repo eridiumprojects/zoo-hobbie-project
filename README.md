@@ -1,6 +1,6 @@
 # Interview REST API Service
 
-A spring boot REST web service that allows the basic CRUD operations and update entities relations.
+A spring boot REST web service that allows the basic CRUD operations and update entities relations .
 Added Authentication and Authorization via the Spring Security module.
 
 ## User
@@ -30,9 +30,41 @@ __Response body__:
 
 `GET /v1/api/animals/{{animalId}}`
 
+__Response body__:
+```
+{
+   "id": "<Long>",
+   "species": "<string>,
+   "birth": <string>,
+   "sex": <string>,
+   "name": <string>
+}
+```
+
 #### Get animals by userId
 
 `GET /v1/api/animals/{{userId}}/animals`
+
+__Response body__:
+```
+[
+  {
+   "id": "<Long>",
+   "species": "<string>,
+   "birth": <string>,
+   "sex": <string>,
+   "name": <string>
+  },
+  {
+   "id": "<Long>",
+   "species": "<string>,
+   "birth": <string>,
+   "sex": <string>,
+   "name": <string>
+  }
+  ...
+]
+```
 
 #### Create an animal
 
@@ -79,4 +111,20 @@ __Request body__:
 ## Warmup task
 
 `Check src/main/java/com.example.interviewproject/practisetask`
+__Input__:
+```
+Some string
+```
+
+__Output__:
+```
+Some string
+gnirts emoS
+=-----------------=
+1000 repeats: %d ms 
+10000 repeats: %d ms 
+100000 repeats: %d ms 
+
+```
+
 

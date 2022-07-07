@@ -14,7 +14,6 @@ import javax.validation.Valid;
 @RestController
 @RequiredArgsConstructor
 public class UserController {
-
     public final UserService userService;
     public final UserMapper userMapper;
     @PostMapping(value = "/register",consumes = "application/json")

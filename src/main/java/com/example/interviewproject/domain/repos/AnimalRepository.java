@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface AnimalRepository extends JpaRepository<Animal,Long> {
+public interface AnimalRepository extends JpaRepository<Animal, Long> {
     Optional<Animal> findByName(String name);
 
     @Query("select an from animal an where an.user.id = :uId")

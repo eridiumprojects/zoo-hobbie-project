@@ -17,7 +17,7 @@ public class Main {
                 reverseString(string);
             }
             watch.stop();
-            System.out.printf("%d repeats: %d ms \n",(int) Math.pow(10,j), watch.getTotalTimeMillis());
+            System.out.printf("%d repeats: %d ms \n", (int) Math.pow(10, j), watch.getTotalTimeMillis());
         }
     }
 

@@ -1,6 +1,6 @@
 package com.example.interviewproject.exceptions;
 
-public class AnimalNotFoundException extends ObjectNotFoundException{
+public class AnimalNotFoundException extends ObjectNotFoundException {
     public AnimalNotFoundException() {
         super();
     }

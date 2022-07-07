@@ -1,14 +1,10 @@
 package com.example.interviewproject.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import org.hibernate.internal.util.StringHelper;
-import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Objects;
 
 @Getter

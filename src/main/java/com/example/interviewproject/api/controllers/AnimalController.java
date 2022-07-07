@@ -7,7 +7,6 @@ import com.example.interviewproject.api.views.AnimalView;
 import com.example.interviewproject.domain.entities.MyUserDetails;
 import com.example.interviewproject.domain.repos.AnimalRepository;
 import com.example.interviewproject.domain.services.AnimalService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +21,6 @@ public class AnimalController {
     public final AnimalService animalService;
     public final AnimalMapper animalMapper;
     public final AnimalRepository animalRepository;
-    public final ObjectMapper mapper;
 
     @GetMapping(value = "/{animalId}", produces = "application/json")
     public AnimalView getAnimalById(@PathVariable Long animalId, @AuthenticationPrincipal MyUserDetails userDetails) {

@@ -46,7 +46,7 @@ public class AnimalService {
                 orElseThrow(() -> new AnimalNotFoundException("The animal with such ID was not found"));
         animal.setName(animalUpdateDto.getName());
         animal.setUser(userRepository.findByUsername(animalUpdateDto.getHost())
-                .orElseThrow(() -> new UsernameNotFoundException("Not found...")));
+                .orElseThrow(() -> new UsernameNotFoundException("User not found")));
         animalRepository.save(animal);
     }
 
