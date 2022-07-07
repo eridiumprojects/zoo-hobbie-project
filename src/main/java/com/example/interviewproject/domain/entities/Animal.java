@@ -1,8 +1,11 @@
 package com.example.interviewproject.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.internal.util.StringHelper;
+import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,15 +22,21 @@ public class Animal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @ElementCollection
     @Column(name = "species")
-    private List<String> species;
+    private String species;
     @Column(name = "birth")
     private String birth;
     @Column(name = "sex")
     private String sex;
     @Column(name = "name", unique = true)
     private String name;
+
+//    @Column(name = "host")
+//    private Long host;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Override
     public boolean equals(Object o) {

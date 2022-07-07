@@ -1,11 +1,15 @@
 package com.example.interviewproject.domain.entities;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
+import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -14,6 +18,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "users")
 @ToString
+@RequiredArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,10 +28,11 @@ public class User {
     private String username;
     @Column(name = "password")
     private String password;
-//    @Column(name = "active")
-//    private boolean active;
     @Column(name = "roles")
     private String roles;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    private List<Animal> animals = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {

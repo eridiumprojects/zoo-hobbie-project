@@ -13,6 +13,7 @@ public class UserMapper {
         userView.setUsername(user.getUsername());
         userView.setPassword(user.getPassword());
         userView.setRoles(user.getRoles());
+        userView.setAnimals(user.getAnimals());
         return userView;
     }
 }

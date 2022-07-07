@@ -10,16 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @RestController
-@RequestMapping("v1/api/")
 @RequiredArgsConstructor
 public class UserController {
 
     public final UserService userService;
     public final UserMapper userMapper;
 
-    @PostMapping(value = "register/",consumes = "application/json")
+    @PostMapping(value = "/register",consumes = "application/json")
     public UserView register(@Valid @RequestBody UserDto userDto) {
         return userMapper.toView(userService.register(userDto));
     }

@@ -1,26 +1,27 @@
 package com.example.interviewproject.domain.entities;
 
+import com.example.interviewproject.domain.repos.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-
 public class MyUserDetails implements UserDetails {
 
     private String username;
     private String password;
-//    private boolean active;
     private List<GrantedAuthority> authorities;
+
 
     public MyUserDetails(User user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
-//        this.active = user.isActive();
         this.authorities = Arrays.stream(user.getRoles().split(",")).
                 map(SimpleGrantedAuthority::new).collect(Collectors.toList());;
     }

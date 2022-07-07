@@ -2,9 +2,11 @@ package com.example.interviewproject.domain.services;
 
 import com.example.interviewproject.api.config.SecurityConfig;
 import com.example.interviewproject.api.dtos.UserDto;
+import com.example.interviewproject.api.mappers.UserMapper;
 import com.example.interviewproject.domain.entities.MyUserDetails;
 import com.example.interviewproject.domain.entities.User;
 import com.example.interviewproject.domain.repos.UserRepository;
+import com.example.interviewproject.exceptions.ObjectAlreadyExistsException;
 import com.example.interviewproject.exceptions.UserAlreadyExistsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +15,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.Optional;
 
 @Service
@@ -20,6 +23,7 @@ import java.util.Optional;
 public class UserService implements UserDetailsService {
 
     public final UserRepository userRepository;
+
 
     public User register(UserDto userDto) {
         User user = new User();
@@ -42,9 +46,8 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> user = userRepository.findByUsername(username);
-
-        user.orElseThrow(() -> new UsernameNotFoundException("Not found" + username));
+        Optional<User> user = Optional.ofNullable(userRepository.findByUsername(username).
+                orElseThrow(() -> new UsernameNotFoundException("Not found" + username)));
         return user.map(MyUserDetails::new).get();
     }
 

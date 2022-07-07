@@ -12,12 +12,14 @@ import java.util.List;
 @Validated
 public class AnimalDto {
     @NotEmpty
-    private List<String> species;
+    private String species;
     @NotEmpty
     private String birth;
     @NotEmpty
     private String sex;
     @NotEmpty
     private String name;
+//    @NotEmpty
+//    private Long host;
 
 }

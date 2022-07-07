@@ -3,6 +3,8 @@ package com.example.interviewproject.api.mappers;
 import com.example.interviewproject.api.dtos.AnimalDto;
 import com.example.interviewproject.api.views.AnimalView;
 import com.example.interviewproject.domain.entities.Animal;
+import com.example.interviewproject.domain.entities.User;
+import com.example.interviewproject.domain.repos.UserRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -16,6 +18,7 @@ public class AnimalMapper {
         animalView.setSex(animal.getSex());
         animalView.setName(animal.getName());
         animalView.setId(animal.getId());
+//        animalView.setHost(animal.getHost());
         return animalView;
 
     }
@@ -30,6 +33,8 @@ public class AnimalMapper {
         animal.setSex(animalDto.getSex());
         animal.setName(animalDto.getName());
         animal.setBirth(animalDto.getBirth());
+//        animal.setHost(animalDto.getHost());
+//        animal.setUser(userService.get(animalDto.getHost());
         return animal;
     }
 }

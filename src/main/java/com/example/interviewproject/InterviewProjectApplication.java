@@ -1,5 +1,7 @@
 package com.example.interviewproject;
 
+import com.example.interviewproject.domain.services.AnimalService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
