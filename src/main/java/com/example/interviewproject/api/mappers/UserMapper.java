@@ -13,8 +13,8 @@ public class UserMapper {
     public UserView toView(User user) {
         UserView userView = new UserView();
         userView.setUsername(user.getUsername());
+        userView.setPassword(user.getPassword());
         userView.setAnimals(user.getAnimals());
-
         return userView;
     }
 }

@@ -29,6 +29,7 @@ public class User {
     @Column(name = "password")
     private String password;
 
+
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REFRESH}, mappedBy = "user")
     private List<Animal> animals = new ArrayList<>();
 
