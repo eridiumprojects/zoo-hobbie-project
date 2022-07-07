@@ -1,22 +1,15 @@
 package com.example.interviewproject.domain.services;
 
-import com.example.interviewproject.api.dtos.AnimalDto;
 import com.example.interviewproject.api.dtos.AnimalUpdateDto;
-import com.example.interviewproject.api.views.AnimalView;
 import com.example.interviewproject.domain.entities.Animal;
-import com.example.interviewproject.domain.entities.User;
 import com.example.interviewproject.domain.repos.AnimalRepository;
 import com.example.interviewproject.domain.repos.UserRepository;
 import com.example.interviewproject.exceptions.AnimalAlreadyExistsException;
 import com.example.interviewproject.exceptions.AnimalNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;

@@ -4,9 +4,10 @@ import com.example.interviewproject.api.dtos.AnimalDto;
 import com.example.interviewproject.api.dtos.AnimalUpdateDto;
 import com.example.interviewproject.api.mappers.AnimalMapper;
 import com.example.interviewproject.api.views.AnimalView;
-import com.example.interviewproject.domain.entities.User;
+import com.example.interviewproject.domain.entities.MyUserDetails;
 import com.example.interviewproject.domain.repos.AnimalRepository;
 import com.example.interviewproject.domain.services.AnimalService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -21,29 +22,31 @@ public class AnimalController {
     public final AnimalService animalService;
     public final AnimalMapper animalMapper;
     public final AnimalRepository animalRepository;
+    public final ObjectMapper mapper;
 
     @GetMapping(value = "/{animalId}", produces = "application/json")
-    public AnimalView getAnimalById(@PathVariable Long animalId, @AuthenticationPrincipal User user) {
+    public AnimalView getAnimalById(@PathVariable Long animalId, @AuthenticationPrincipal MyUserDetails userDetails) {
         return animalMapper.toView(animalService.getById(animalId));
     }
 
     @GetMapping(value = "/{userId}/animals", produces = "application/json")
-    public List<AnimalView> getUserAnimals(@PathVariable Long userId) {
+    public List<AnimalView> getUserAnimals(@PathVariable Long userId, @AuthenticationPrincipal MyUserDetails userDetails) {
         return animalMapper.toViews(animalRepository.getAnimalsByUserId(userId));
     }
 
     @PostMapping(value = "", consumes = "application/json")
-    public AnimalView saveAnimal(@Valid @RequestBody AnimalDto animalDto) {
+    public AnimalView saveAnimal(@Valid @RequestBody AnimalDto animalDto, @AuthenticationPrincipal MyUserDetails userDetails) {
         return animalMapper.toView(animalService.saveAnimal(animalMapper.toAnimal(animalDto)));
     }
 
     @DeleteMapping(value = "/delete/{animalId}", produces = "application/json")
-    public void deleteAnimalById(@Valid @PathVariable Long animalId) {
+    public void deleteAnimalById(@Valid @PathVariable Long animalId, @AuthenticationPrincipal MyUserDetails userDetails) {
         animalService.deleteAnimalById(animalId);
     }
 
     @PutMapping(value = "/update/{animalId}", produces = "application/json")
-    public void updateAnimalById(@PathVariable Long animalId, @Valid @RequestBody AnimalUpdateDto animalUpdateDto) {
+    public void updateAnimalById(@PathVariable Long animalId, @Valid @RequestBody AnimalUpdateDto animalUpdateDto,
+                                 @AuthenticationPrincipal MyUserDetails userDetails) {
         animalService.updateAnimalById(animalId, animalUpdateDto);
     }
 }

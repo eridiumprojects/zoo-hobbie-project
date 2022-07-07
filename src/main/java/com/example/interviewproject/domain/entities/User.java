@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,7 +29,6 @@ public class User {
     private String username;
     @Column(name = "password")
     private String password;
-
 
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REFRESH}, mappedBy = "user")
     private List<Animal> animals = new ArrayList<>();
