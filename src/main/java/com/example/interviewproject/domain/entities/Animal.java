@@ -31,10 +31,7 @@ public class Animal {
     @Column(name = "name", unique = true)
     private String name;
 
-//    @Column(name = "host")
-//    private Long host;
-
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch =FetchType.EAGER,cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "user_id")
     private User user;
 

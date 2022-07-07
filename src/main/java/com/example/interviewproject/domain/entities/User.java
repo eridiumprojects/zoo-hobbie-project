@@ -21,7 +21,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
     @Column(name = "username")
@@ -31,7 +31,7 @@ public class User {
     @Column(name = "roles")
     private String roles;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    @OneToMany(fetch =FetchType.EAGER,cascade = {CascadeType.MERGE, CascadeType.REFRESH},mappedBy = "user")
     private List<Animal> animals = new ArrayList<>();
 
     @Override

@@ -5,12 +5,17 @@ import com.example.interviewproject.api.views.AnimalView;
 import com.example.interviewproject.domain.entities.Animal;
 import com.example.interviewproject.domain.entities.User;
 import com.example.interviewproject.domain.repos.UserRepository;
+import com.example.interviewproject.domain.services.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class AnimalMapper {
+
+    public final UserService userService;
     public AnimalView toView(Animal animal) {
         AnimalView animalView = new AnimalView();
         animalView.setSpecies(animal.getSpecies());
@@ -18,7 +23,6 @@ public class AnimalMapper {
         animalView.setSex(animal.getSex());
         animalView.setName(animal.getName());
         animalView.setId(animal.getId());
-//        animalView.setHost(animal.getHost());
         return animalView;
 
     }
@@ -33,8 +37,7 @@ public class AnimalMapper {
         animal.setSex(animalDto.getSex());
         animal.setName(animalDto.getName());
         animal.setBirth(animalDto.getBirth());
-//        animal.setHost(animalDto.getHost());
-//        animal.setUser(userService.get(animalDto.getHost());
+        animal.setUser(userService.getUser(animalDto.getHost()));
         return animal;
     }
 }

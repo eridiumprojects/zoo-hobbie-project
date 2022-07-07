@@ -51,4 +51,9 @@ public class UserService implements UserDetailsService {
         return user.map(MyUserDetails::new).get();
     }
 
+    public User getUser(String host) {
+        return userRepository.findByUsername(host).
+                orElseThrow(() -> new UsernameNotFoundException("..."));
+
+    }
 }

@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/testing").authenticated()
 //                .antMatchers("/v1/api/**").authenticated()
                 .antMatchers("/logout").authenticated()
-                .and().csrf().disable();
+                .and().csrf().disable().formLogin();
 //                .formLogin().failureForwardUrl("/login#error");
     }
 

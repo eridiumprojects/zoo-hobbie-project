@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.apache.catalina.LifecycleState;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Data

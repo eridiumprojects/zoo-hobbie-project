@@ -15,7 +15,5 @@ public class AnimalView {
     private String birth;
     private String sex;
     private String name;
-//    @JsonIgnore
-//    private Long host;
 
 }

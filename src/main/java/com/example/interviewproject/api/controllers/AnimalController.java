@@ -1,6 +1,7 @@
 package com.example.interviewproject.api.controllers;
 
 import com.example.interviewproject.api.dtos.AnimalDto;
+import com.example.interviewproject.api.dtos.AnimalUpdateDto;
 import com.example.interviewproject.api.mappers.AnimalMapper;
 import com.example.interviewproject.api.views.AnimalView;
 import com.example.interviewproject.domain.entities.User;
@@ -42,8 +43,8 @@ public class AnimalController {
         animalService.deleteAnimalById(animalId);
     }
 
-//    @PutMapping(value = "/update/{animalId}", produces = "application/json")
-//    public void updateAnimalById(@PathVariable Long animalId, @Valid @RequestBody AnimalDto animalDto) {
-//        animalService.updateAnimalById(animalId, animalDto);
-//    }
+    @PutMapping(value = "/update/{animalId}", produces = "application/json")
+    public void updateAnimalById(@PathVariable Long animalId, @Valid @RequestBody AnimalUpdateDto animalUpdateDto) {
+        animalService.updateAnimalById(animalId, animalUpdateDto);
+    }
 }

@@ -19,7 +19,7 @@ public class AnimalDto {
     private String sex;
     @NotEmpty
     private String name;
-//    @NotEmpty
-//    private Long host;
+    @NotEmpty
+    private String host;
 
 }
