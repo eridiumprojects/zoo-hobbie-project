@@ -23,7 +23,7 @@ public class AnimalController {
     public final AnimalRepository animalRepository;
 
     @GetMapping(value = "/{animalId}", produces = "application/json")
-    public AnimalView getAnimalById(@PathVariable Long animalId) {
+    public AnimalView getAnimalById(@PathVariable Long animalId, @AuthenticationPrincipal User user) {
         return animalMapper.toView(animalService.getById(animalId));
     }
 
@@ -34,7 +34,6 @@ public class AnimalController {
 
     @PostMapping(value = "", consumes = "application/json")
     public AnimalView saveAnimal(@Valid @RequestBody AnimalDto animalDto) {
-        System.out.println(animalService.getInfoAboutSpecies());
         return animalMapper.toView(animalService.saveAnimal(animalMapper.toAnimal(animalDto)));
     }
 

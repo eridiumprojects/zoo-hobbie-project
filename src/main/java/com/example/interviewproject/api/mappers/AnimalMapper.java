@@ -16,6 +16,7 @@ import java.util.List;
 public class AnimalMapper {
 
     public final UserService userService;
+
     public AnimalView toView(Animal animal) {
         AnimalView animalView = new AnimalView();
         animalView.setSpecies(animal.getSpecies());

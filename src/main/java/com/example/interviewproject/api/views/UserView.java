@@ -13,7 +13,6 @@ public class UserView {
     private String username;
     @JsonIgnore
     private String password;
-    private String roles;
     @JsonIgnore
     private List<Animal> animals;
 }

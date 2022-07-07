@@ -35,8 +35,8 @@ public class AnimalService {
 
     public Animal saveAnimal(Animal animal) {
         isNameUnique(animal.getName());
-        if(!(isSpeciesExist(animal.getSpecies()))) {
-            throw new AnimalNotFoundException("Invalid species. Try again");
+        if (!(someTests(animal.getSpecies(), animal.getSex(), animal.getBirth()))) {
+            throw new AnimalNotFoundException("Invalid data. Try again");
         }
 
         return animalRepository.save(animal);
@@ -64,23 +64,24 @@ public class AnimalService {
         }
     }
 
-    public boolean isSpeciesExist(String species) {
-        List<String> list = getInfoAboutSpecies();
-        int size = list.size();
-        boolean flag = false;
-        for (int i = 0; i < size; i++) {
-            if (Objects.equals(species, list.get(i))) {
-                flag = true;
+    public boolean someTests(String species, String sex, String birth) {
+        List<String> speciesList = List.of("Cat", "Dog", "Mouse", "Tiger", "Bear");
+        int counter = 0;
+        for (String s : speciesList) {
+            if (Objects.equals(species, s)) {
+                counter++;
                 break;
             }
         }
-        return flag;
-    }
-
-
-    public List<String> getInfoAboutSpecies() {
-        List<String> species = List.of("Cat","Dog","Mouse","Tiger","Bear");
-        System.out.println("Species in collection:");
-        return species;
+        List<String> sexList = List.of("Male", "Female");
+        for (String x : sexList) {
+            if (Objects.equals(sex, x)) {
+                counter++;
+            }
+        }
+        if ((birth.length() == 10)) {
+            counter++;
+        }
+        return counter == 3;
     }
 }

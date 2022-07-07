@@ -13,16 +13,7 @@ public class HomeController {
 
     @GetMapping("/user")
     public String user() {
-        return "Welcome,user";
+        return "<h1>Welcome,user!<h1>";
     }
 
-    @GetMapping("/admin")
-    public String admin() {
-        return "Welcome,admin";
-    }
-
-    @GetMapping("/testing")
-    public String testing() {
-        return "Testing page for authorised";
-    }
 }

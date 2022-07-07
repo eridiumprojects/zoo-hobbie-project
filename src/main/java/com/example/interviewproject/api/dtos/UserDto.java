@@ -18,6 +18,4 @@ public class UserDto {
     private String username;
     @NotNull
     private String password;
-    @NotNull
-    private String roles;
 }

@@ -1,34 +1,26 @@
 package com.example.interviewproject.domain.entities;
 
-import com.example.interviewproject.domain.repos.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
-public class MyUserDetails implements UserDetails {
 
+@RequiredArgsConstructor
+public class MyUserDetails implements UserDetails {
     private String username;
     private String password;
-    private List<GrantedAuthority> authorities;
-
 
     public MyUserDetails(User user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
-        this.authorities = Arrays.stream(user.getRoles().split(",")).
-                map(SimpleGrantedAuthority::new).collect(Collectors.toList());;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+        return null;
     }
 
     @Override

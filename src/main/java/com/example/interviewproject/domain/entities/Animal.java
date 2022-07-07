@@ -31,7 +31,7 @@ public class Animal {
     @Column(name = "name", unique = true)
     private String name;
 
-    @ManyToOne(fetch =FetchType.EAGER,cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "user_id")
     private User user;
 

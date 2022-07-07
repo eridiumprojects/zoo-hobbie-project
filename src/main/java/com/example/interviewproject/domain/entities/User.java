@@ -28,10 +28,8 @@ public class User {
     private String username;
     @Column(name = "password")
     private String password;
-    @Column(name = "roles")
-    private String roles;
 
-    @OneToMany(fetch =FetchType.EAGER,cascade = {CascadeType.MERGE, CascadeType.REFRESH},mappedBy = "user")
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REFRESH}, mappedBy = "user")
     private List<Animal> animals = new ArrayList<>();
 
     @Override
@@ -39,11 +37,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return username.equals(user.username) && password.equals(user.password) && roles.equals(user.roles);
+        return username.equals(user.username) && password.equals(user.password) && animals.equals(user.animals);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, password, roles);
+        return Objects.hash(username, password, animals);
     }
 }

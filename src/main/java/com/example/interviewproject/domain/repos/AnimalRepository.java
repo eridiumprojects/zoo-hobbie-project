@@ -13,8 +13,6 @@ import java.util.Optional;
 public interface AnimalRepository extends JpaRepository<Animal,Long> {
     Optional<Animal> findByName(String name);
 
-    Optional<Animal> findBySpecies(String species);
-
     @Query("select an from animal an where an.user.id = :uId")
     List<Animal> getAnimalsByUserId(@Param("uId") Long userId);
 }
