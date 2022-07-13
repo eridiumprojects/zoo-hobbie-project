@@ -8,10 +8,12 @@ import com.example.interviewproject.domain.entities.MyUserDetails;
 import com.example.interviewproject.domain.repos.AnimalRepository;
 import com.example.interviewproject.domain.services.AnimalService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -23,17 +25,17 @@ public class AnimalController {
     public final AnimalRepository animalRepository;
 
     @GetMapping(value = "/{animalId}", produces = "application/json")
-    public AnimalView getAnimalById(@PathVariable Long animalId, @AuthenticationPrincipal MyUserDetails userDetails) {
+    public AnimalView getAnimalById(@PathVariable Long animalId) {
         return animalMapper.toView(animalService.getById(animalId));
     }
 
     @GetMapping(value = "/{userId}/animals", produces = "application/json")
-    public List<AnimalView> getUserAnimals(@PathVariable Long userId, @AuthenticationPrincipal MyUserDetails userDetails) {
+    public List<AnimalView> getUserAnimals(@PathVariable Long userId) {
         return animalMapper.toViews(animalRepository.getAnimalsByUserId(userId));
     }
 
     @PostMapping(value = "", consumes = "application/json")
-    public AnimalView saveAnimal(@Valid @RequestBody AnimalDto animalDto, @AuthenticationPrincipal MyUserDetails userDetails) {
+    public AnimalView saveAnimal(@Valid @RequestBody AnimalDto animalDto, Principal principal) {
         return animalMapper.toView(animalService.saveAnimal(animalMapper.toAnimal(animalDto)));
     }
 
